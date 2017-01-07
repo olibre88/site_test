@@ -1,11 +1,11 @@
 <?php
 class User extends Entity {
-	public static $tableName = 'user';
+	public static $tableName = 'users';
 	public static $keyColumn = 'id';
-	public $user_name;
-	public $user_email;
-	public $user_pass;
-	public $user_status;
+	public $email;
+	public $password;
+	public $userName;
+	//public $user_status;
 	public $id;
 	
 	/**
@@ -17,7 +17,7 @@ class User extends Entity {
 	 * @return boolean|User
 	 */
 	public static function getByUsernameAndPassword($username, $password) {
-		$query = "SELECT * FROM " . self::$tableName . " WHERE user_name = '{$username}' AND user_pass = '{$password}' LIMIT 1";
+		$query = "SELECT * FROM " . self::$tableName . " WHERE email = '{$username}' AND password = '{$password}' LIMIT 1";
 		
 		$result = self::$db->query ( $query );
 		
@@ -28,31 +28,19 @@ class User extends Entity {
 		$user = $result->fetchObject ( User::class );
 		
 		return $user;
+				
 	}
-	public static function getByUsername($username) {
-		$query = "SELECT * FROM " . self::$tableName . " WHERE user_name = '{$username}' LIMIT 1";
+	/* Ne radi upit lepo,
+	 * Rezultat je  'INSERT INTO users (email,password,userName) VALUES ('1', '1','1')'
+	 * tmmm
+	 */
+	public static  function insert($email,$userName,$password) {
+		$tableName = static::$tableName;
+		$query = "INSERT INTO ". self::$tableName ." (email,password,userName) VALUES ('{$email}', '{$userName}','{$password}')";
 	
-		$result = self::$db->query ( $query );
 	
-		if ($result->rowCount () < 1) {
-			return false;
-		}
-	
-		$user = $result->fetchObject ( User::class );
-	
-		return $user;
-	}
-	public static function checkMail($user_email) {
-		$query = "SELECT * FROM " . self::$tableName . " WHERE user_email = '{$user_email}' LIMIT 1";
-	
-		$result = self::$db->query ( $query );
-	
-		if ($result->rowCount () < 1) {
-			return false;
-		}
-	
-		$email = $result->fetchObject ( User::class );
-	
-		return $email;
+		
+		
+		return $query;
 	}
 }

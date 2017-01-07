@@ -1,16 +1,27 @@
 <?php 
 
-require 'auth/database.php';
+require_once 'core/init.php';
 
-if(!empty($_POST['email'])&& !empty($_POST['password'])):
-// Ener the new user in database
-	$sql="INSERT INTO users (email, password) VALUES(:email,:password)";
-	$stmt = $conn->prepare($sql);
+if (isset ( $_POST ['submit'] ) && isset ( $_POST ['email'] ) && isset ( $_POST ['password'] ) && isset ( $_POST ['userName'] )) {
+
+	$email = $_POST ['email'];
+	$password = $_POST ['password'];
+	$userName = $_POST ['userName'];
 	
+	$result = User::insert($email, $userName, $password);
+	var_dump($result);
+	die();
+	if (false === $result) {
+		
+		echo "Error";
+	} else {
+		echo "You have successfully registered, <a href='login.php'>Click here to return to login form.</a>";
+	}
+	
+}
 
-	$stmt->bindParam(':email', $_POST['email']);
-	$stmt->bindParam(':password',password_hash($_POST['password'],PASSWORD_BCRYPT));
-endif;
+
+
 ?>
 
 
@@ -27,12 +38,12 @@ endif;
 	<h1>Registar</h1>
 	<span>or <a href="login.php">Login here</a></span>
 
-	<form action="registar.php" method="POST">
+	<form action="register.php" method="POST">
 	
 		<input type="text" placeholder="Enter your email" name="email"> 
-		<input type="password" placeholder="Enter your password" name="password">
-		<input type="password" placeholder="Confirm password" name="password">	 
-		<input type="submit">
+		<input type="text" placeholder="Enter your user name" name="userName"> 
+		<input type="password" placeholder="Enter your password" name="password">	 
+		<input type="submit" name="submit">
 
 	</form>
 </body>

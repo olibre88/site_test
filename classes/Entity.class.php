@@ -21,7 +21,7 @@ class Entity {
 		$keyColumn = static::$keyColumn;
 		$q = self::$db->query ( "DELETE FROM {$tableName} WHERE {$keyColumn} = {$id}" );
 	}
-	public function insert() {
+	/*public function insert() {
 		$tableName = static::$tableName;
 		$q = "INSERT INTO {$tableName} (";
 		$vel = '';
@@ -36,7 +36,7 @@ class Entity {
 		$q .= ")";
 		
 		return self::$db->query ( $q );
-	}
+	}*/
 	public static function update($id, $params = null) {
 		$tableName = static::$tableName;
 		$keyColumn = static::$keyColumn;
@@ -60,5 +60,6 @@ class Entity {
 	public static function init() {
 		self::$db = Connect::getInstance ();
 	}
+	
 }
 Entity::init ();
