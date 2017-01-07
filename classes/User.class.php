@@ -37,10 +37,9 @@ class User extends Entity {
 	public static  function insert($email,$userName,$password) {
 		$tableName = static::$tableName;
 		$query = "INSERT INTO ". self::$tableName ." (email,password,userName) VALUES ('{$email}', '{$userName}','{$password}')";
-	
-	
+		$stmt = self::$db->prepare ( $query );
+		return $stmt->execute ();
 		
-		
-		return $query;
+	
 	}
 }

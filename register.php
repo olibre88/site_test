@@ -9,14 +9,14 @@ if (isset ( $_POST ['submit'] ) && isset ( $_POST ['email'] ) && isset ( $_POST 
 	$userName = $_POST ['userName'];
 	
 	$result = User::insert($email, $userName, $password);
-	var_dump($result);
-	die();
+
 	if (false === $result) {
 		
 		echo "Error";
 	} else {
 		echo "You have successfully registered, <a href='login.php'>Click here to return to login form.</a>";
 	}
+	
 	
 }
 
