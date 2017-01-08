@@ -30,16 +30,26 @@ class User extends Entity {
 		return $user;
 				
 	}
-	/* Ne radi upit lepo,
-	 * Rezultat je  'INSERT INTO users (email,password,userName) VALUES ('1', '1','1')'
-	 * tmmm
-	 */
+
 	public static  function insert($email,$userName,$password) {
 		$tableName = static::$tableName;
 		$query = "INSERT INTO ". self::$tableName ." (email,password,userName) VALUES ('{$email}', '{$userName}','{$password}')";
 		$stmt = self::$db->prepare ( $query );
 		return $stmt->execute ();
 		
+	
+	}
+	public static function getUsers(){
+		$tableName = static::$tableName;
+		$query = self::$db->query ( "SELECT * FROM {$tableName}" );
+		$postArr = $query->fetchAll ();
+		return $postArr;
+		
+	}
+	public static function deleteUser($id){
+		$query = "DELETE FROM".self::$tableName."WHERE '{$id}'";
+		$stmt = self::$db->prepare ( $query );
+		return $stmt->execute ();
 	
 	}
 }

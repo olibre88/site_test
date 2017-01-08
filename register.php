@@ -1,26 +1,20 @@
-<?php 
-
+<?php
 require_once 'core/init.php';
 
 if (isset ( $_POST ['submit'] ) && isset ( $_POST ['email'] ) && isset ( $_POST ['password'] ) && isset ( $_POST ['userName'] )) {
-
+	
 	$email = $_POST ['email'];
 	$password = $_POST ['password'];
 	$userName = $_POST ['userName'];
 	
-	$result = User::insert($email, $userName, $password);
-
+	$result = User::insert ( $email, $password, $userName );
+	
 	if (false === $result) {
-		
 		echo "Error";
 	} else {
 		echo "You have successfully registered, <a href='login.php'>Click here to return to login form.</a>";
 	}
-	
-	
 }
-
-
 
 ?>
 
@@ -39,11 +33,11 @@ if (isset ( $_POST ['submit'] ) && isset ( $_POST ['email'] ) && isset ( $_POST 
 	<span>or <a href="login.php">Login here</a></span>
 
 	<form action="register.php" method="POST">
-	
-		<input type="text" placeholder="Enter your email" name="email"> 
-		<input type="text" placeholder="Enter your user name" name="userName"> 
-		<input type="password" placeholder="Enter your password" name="password">	 
-		<input type="submit" name="submit">
+
+		<input type="text" placeholder="Enter your email" name="email"> <input
+			type="text" placeholder="Enter your user name" name="userName"> <input
+			type="password" placeholder="Enter your password" name="password"> <input
+			type="submit" name="submit">
 
 	</form>
 </body>
