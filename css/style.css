@@ -40,3 +40,29 @@ input[type="submit"]:hover {
 	color: #333;
 	text-decoration: none;
 }
+
+input[type="button"] {
+	padding: 6px;
+	color: #fff;
+	background: #0098cb;
+	width: 70px;
+	margin: 1px auto;
+	border: 1px; border-radius 3px;
+	cursor: pointer;
+	 margin-left: 8px;
+}
+table, th, td {
+   border: 1px solid black;
+   margin: 1px auto;
+}
+
+#name{
+	outline: none;
+	padding: 0px;
+	display: block;
+	width: 20px;
+	border-radius: 3px;
+	border: 1px solid #eee;
+	margin: 0px auto;
+	
+}

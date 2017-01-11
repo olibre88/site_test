@@ -5,7 +5,7 @@ class User extends Entity {
 	public $email;
 	public $password;
 	public $userName;
-	//public $user_status;
+	// public $user_status;
 	public $id;
 	
 	/**
@@ -28,28 +28,25 @@ class User extends Entity {
 		$user = $result->fetchObject ( User::class );
 		
 		return $user;
-				
 	}
-
-	public static  function insert($email,$userName,$password) {
+	public static function insert($email, $userName, $password) {
 		$tableName = static::$tableName;
-		$query = "INSERT INTO ". self::$tableName ." (email,password,userName) VALUES ('{$email}', '{$userName}','{$password}')";
+		$query = "INSERT INTO " . self::$tableName . " (email,password,userName) VALUES ('{$email}', '{$userName}','{$password}')";
 		$stmt = self::$db->prepare ( $query );
 		return $stmt->execute ();
-		
-	
 	}
-	public static function getUsers(){
+	public static function getUsers() {
 		$tableName = static::$tableName;
 		$query = self::$db->query ( "SELECT * FROM {$tableName}" );
 		$postArr = $query->fetchAll ();
 		return $postArr;
-		
 	}
-	public static function deleteUser($id){
-		$query = "DELETE FROM".self::$tableName."WHERE '{$id}'";
-		$stmt = self::$db->prepare ( $query );
-		return $stmt->execute ();
-	
+	public static function deleteUser($id) {
+		$query = "DELETE FROM" . self::$tableName . "WHERE id ={$id}";
+		$result = self::$db->query ( $query );
+		$user = $result->fetchObject ( User::class );
+		
+		return $user;
+		;
 	}
 }
