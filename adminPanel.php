@@ -13,11 +13,11 @@
 				type="text" id="txtuserNameins" placeholder="enter user name"> <input
 				type="button" id="but1" value="insert" onClick="ins();">
 		</form><br />
-		
+
 		<div id="disp_data"></div>
-		
-		
-		<script type="text/javascript"> 
+
+
+		<script type="text/javascript">
 disp_data();
 function disp_data()
 {
@@ -30,23 +30,23 @@ document.getElementById("disp_data").innerHTML=xmlhttp.responseText;
 
 function aa(a)
 {
-nameid="name"+a;
-txtnameid="txtname"+a;
-var name=document.getElementById(nameid).innerHTML;
-document.getElementById(nameid).innerHTML="<input type='text' value='"+name+"' id='"+txtnameid+"'>";
+	var nameid="name"+a;
+	var txtnameid="txtname"+a;
+	var name=document.getElementById(nameid).innerHTML;
+	document.getElementById(nameid).innerHTML="<input type='text' value='"+name+"' id='"+txtnameid+"'>";
 
-userNameid="userName"+a;
-txtuserNameid="txtuserName"+a;
-var userName=document.getElementById(userNameid).innerHTML;
-document.getElementById(userNameid).innerHTML="<input type='text' value='"+userName+"' id='"+txtuserNameid+"'>";
+	var userNameid="userName"+a;
+	var txtuserNameid="txtuserName"+a;
+    var userName=document.getElementById(userNameid).innerHTML;
+	document.getElementById(userNameid).innerHTML="<input type='text' value='"+userName+"' id='"+txtuserNameid+"'>";
 
-passwordid="password"+a;
-txtpasswordid="txtpassword"+a;
-var password=document.getElementById(passwordid).innerHTML;
-document.getElementById(passwordid).innerHTML="<input type='text' value='"+password+"' id='"+txtpasswordid+"'>";
+	var passwordid="password"+a;
+	var txtpasswordid="txtpassword"+a;
+	var password=document.getElementById(passwordid).innerHTML;
+	document.getElementById(passwordid).innerHTML="<input type='text' value='"+password+"' id='"+txtpasswordid+"'>";
 
-updateid="update"+a;
-document.getElementById(updateid).style.visibility="visible";
+	var updateid="update"+a;
+	document.getElementById(updateid).style.visibility="visible";
 }
 
 
@@ -59,7 +59,7 @@ var name=document.getElementById(nameid).value;
 var userNameid="txtuserName"+b;
 var userName=document.getElementById(userNameid).value;
 
-var passwordid="password"+b;
+var passwordid="txtpassword"+b;
 var password=document.getElementById(passwordid).value;
 
 
@@ -89,13 +89,13 @@ function delete1(id)
 	xmlhttp.open("GET","update.php?id="+id+"&status=delete",false);
 	xmlhttp.send(null);
 	disp_data();
-	
+
 
 
 }
 function ins()
 {
-	
+
 var name=document.getElementById("txtnameins").value;
 var userName=document.getElementById("txtuserNameins").value;
 
@@ -110,15 +110,6 @@ document.getElementById("txtuserNameins").value="";
 
 }
 
-
 </script>
-
-
-	
-
-
-
-
-
 </body>
 </html>

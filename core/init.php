@@ -4,11 +4,11 @@ $GLOBALS['config'] = array(
 	'DB'=>array(
 		'host' => '127.0.0.1',
 		'user' => 'root',
-		'password' => '',
-		'db_name' => 'site_test'
+		'password' => 'milos',
+		'db_name' => 'test'
 	),
 	'status' => true,
-	'app_dir' => 'C:/wamp64/www/site_test',
+	'app_dir' => 'var/www/site_test',
 	'session' => array()
 );
 spl_autoload_register(function($className){
